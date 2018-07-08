@@ -45,6 +45,10 @@
 	#header ul.location li a:active {color: #FFF;} /* 点击激活链接：在你点击该链接后，页面正在转向新地址的时候，链接显示此颜色 */
     #header ul.location li a:hover:not(.active){color: #FFF;background-color: #1C8ADB;} /* 鼠标在链接上 */ 
 	#header ul.location li .active {background-color: #1C8ADB;}
+	/*基本信息样式表*/
+	#information{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
 	/*实验目的样式表*/
 	#purpose{
 		width:940px;margin:5px auto 0 auto;padding:0 20px;
@@ -187,13 +191,80 @@
 </ul>
 </div>
 
+<div id ="information">
+	<h3>武汉大学化学实验教学中心实验讲义</h3>
+		<form name="myinformation">
+			<table width="640" border="1" align="center">
+				<tr>
+				<td width="34" height="32">&nbsp;</td>
+				<td colspan="2">基本信息</td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td width="120"><div align="right">姓名：</div></td>
+				<td width="480"><input type="text" name="myname" required></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">学号：</div></td>
+				<td><input type="text" name="mynumber" required></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">学院：</div></td>
+				<td><input type="text" name="myfaculty" required></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">专业：</div></td>
+				<td><input type="text" name="mymajor" required></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">年级班级：</div></td>
+				<td><input type="text" name="myclass" required></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">同组同学姓名：</div></td>
+				<td><input type="text" name="myclassmate" required></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">天气：</div></td>
+				<td><input type="text" name="weather"></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">室温：</div></td>
+				<td><input type="text" name="temperature"></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">大气压：</div></td>
+				<td><input type="text" name="pressure"></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><div align="right">实验日期：</div></td>
+				<input type="date"name="date"/>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><input type="reset" name="chongzhi" value="重置"></td>
+				</tr>
+				</table>
+	</form>
+	<p id="score">成绩：</p>
+</div>
+
 <div id="purpose">
 	<h3 id="purposeh">实验目的</h3>
 	<div id="purposeinput">
-	<!--<form action="form_action.asp" method="get" name="mypurpose">-->
+	<form name="mypurpose">
 	<textarea wrap="hard" rows="6" style="resize:none;width:920px" placeholder="请写下实验目的……"></textarea><br>
 	<input type="button" value="查看参考" onclick="showpurreference()">
-    <!--</form>-->
+   </form>
     </div>
     <div id="purposereference"  style="display: none;">
 	<ol style="list-style-type: none;">
