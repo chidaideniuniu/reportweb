@@ -812,11 +812,28 @@
 		return result;
 	}
 
-	function drawTL()
+	function drawTL(TESTER,R,xD,xF,T1,T2)
 	{
-		
-
-
+		var T = ((T1+T2)/2);
+		var M = ((46*xF)/(28*xF+18));
+		var rF = 4.745*M*M-331.5*M+537.97;
+		var Cp = 0.001*(3.1949*T*(Math.log(M*100)/Math.log(10))-550.99*M-3.0506*T)+1.01;
+		var Q = (Cp*(T2-T1))/rF+1;
+		var d = 0-(xF/(Q-1));
+		var b = xD/(R+1);
+		var c = Q/(Q-1);
+		var a = R/(R+1);
+		var dotx = ((d-b)/(c-a));
+		var doty = a*dotx+b;
+		var trace = {
+			x:[xF,dotx],
+			y:[xF,doty],
+			mode:'lines+markers',
+			name:'提馏段'
+		}
+		data = [trace];
+		Plotly.plot(TESTER, data);
+		return result;
 	}
 	
 	function toDrawTray(){
@@ -832,6 +849,9 @@
 	}
 	
 	function toDrawTray2(){
+		var xM = parseFloat(document.getElementById('jinliaoyichun2').value);
+		var T1 = parseFloat(document.getElementById('jinliaot1').value);
+		var T2 = parseFloat(document.getElementById('paodiant2').value);
 		var xD = parseFloat(document.getElementById('tadingyichun2').value);
 		var xF = parseFloat(document.getElementById('tafuyichun2').value);
 		var R = parseFloat(document.getElementById('huiliubi').value);
@@ -841,7 +861,8 @@
 			return;
 		}
 		var result = drawTray(TESTER_2, xD, xF);
-		var result =  drawJL(TESTER_3,R,xD);
+		var result2 =  drawJL(TESTER_3,R,xD);
+		var result3 = drawTL(TESTER_4,R,xD,xF,T1,T2);
 		document.getElementById('zongbanxiaolv2').innerHTML = ((result - 1)/N)*100;
 	}
 </script>
