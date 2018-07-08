@@ -788,6 +788,30 @@
 		Plotly.plot(TESTER, data);
 		return result;
 	}
+
+	function drawJL(TESTER,R,xD)
+	{
+		var m = [], n = [];
+		var result = 0;
+		for(var i = 0; i <= xD;i += 0.0001){
+		m.push(i);
+		n.push((R*i+xD)/(R+1));
+	}
+		var trace =
+		{
+			x:m,
+			y:n,
+			mode:'lines',
+			name:'精馏段'
+		}
+		data = [trace];
+		Plotly.plot(TESTER, data);
+		return result;
+	}
+
+	function drawTL(){
+
+	}
 	
 	function toDrawTray(){
 		var xD = parseFloat(document.getElementById('tadingyichun').value);
@@ -804,12 +828,14 @@
 	function toDrawTray2(){
 		var xD = parseFloat(document.getElementById('tadingyichun2').value);
 		var xF = parseFloat(document.getElementById('tafuyichun2').value);
+		var R = parseFloat(document.getElementById('huiliubi').value);
 		var N = parseInt(document.getElementById('zongtaban2').value);
 		if(xD > 0.894 || xF < 0){
 			alert("数据不符合条件，请检查输入");
 			return;
 		}
 		var result = drawTray(TESTER_2, xD, xF);
+		var result =  drawJL(R,xD);
 		document.getElementById('zongbanxiaolv2').innerHTML = ((result - 1)/N)*100;
 	}
 </script>
