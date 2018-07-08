@@ -726,6 +726,8 @@
 	}
 	initMathFunction(TESTER_1);
 	initMathFunction(TESTER_2);
+	initMathFunction(TESTER_3);
+	initMathFunction(TESTER_4);
 
 </script>
 <script type="text/javascript" language="javascript">
@@ -793,10 +795,11 @@
 	{
 		var m = [], n = [];
 		var result = 0;
-		for(var i = 0; i <= xD;i += 0.0001){
+		for(var i = 0; i <= xD;i += 0.0001)
+		{
 		m.push(i);
 		n.push((R*i+xD)/(R+1));
-	}
+		}
 		var trace =
 		{
 			x:m,
@@ -809,7 +812,10 @@
 		return result;
 	}
 
-	function drawTL(){
+	function drawTL()
+	{
+		
+
 
 	}
 	
@@ -835,7 +841,7 @@
 			return;
 		}
 		var result = drawTray(TESTER_2, xD, xF);
-		var result =  drawJL(R,xD);
+		var result =  drawJL(TESTER_3,R,xD);
 		document.getElementById('zongbanxiaolv2').innerHTML = ((result - 1)/N)*100;
 	}
 </script>
