@@ -819,20 +819,53 @@
 		var result = 0;
 		var T = ((T1+T2)/2);
 		var M = ((46*xF)/(28*xF+18));
-		var rF = 4.745*M*M-331.5*M+537.97;
-		var Cp = 0.001*(3.1949*T*(Math.log(M*100)/Math.log(10))-550.99*M-3.0506*T)+1.01;
-		var Q = (Cp*(T2-T1))/rF+1;
+		var rF = (4.745*M*M-331.5*M+537.97);
+		var Cp = (0.001*(3.1949*T*(Math.log(M*100)/Math.log(10))-550.99*M-3.0506*T)+1.01);
+		var Q = ((Cp*(T2-T1))/rF+1);
 		var d = xF/(1-Q);
 		var b = xD/(R+1);
 		var c = Q/(Q-1);
 		var a = R/(R+1);
-		var dotx = ((d-b)/(c-a));
+		var dotx = ((d-b)/(a-c));
 		var doty = a*dotx+b;
 		var trace = {
 			x:[xF,dotx],
 			y:[xF,doty],
 			mode:'lines+markers',
 			name:'提馏段'
+		}
+		var data = [trace];
+		Plotly.plot(TESTER, data);
+		return result;
+	}
+
+	function drawTray2(TESTER,R,xD,xF){
+		var a = R/(R+1);
+		var b = xD/(R+1);
+		var i = xD, j = (a*xD+b);
+		var m = [], n = [];
+		var flag = 0;
+		var result = 0;
+		while(true){
+			m.push(i);
+			n.push(j);
+			if(flag == 0){ //作横线，并使总塔板数N + 1
+				flag = 1;
+				i = getX(j);
+				j = j;
+				result ++;
+			}else{ //作竖线
+				if(i < xF)break;
+				flag = 0;
+				i = i;
+				j = a*i+b;
+			}
+		}
+		var trace = {
+			x:m,
+			y:n,
+			mode:'lines+markers',
+			name:'塔板'
 		}
 		var data = [trace];
 		Plotly.plot(TESTER, data);
@@ -863,9 +896,9 @@
 			alert("数据不符合条件，请检查输入");
 			return;
 		}
-		var result1 = drawTray(TESTER_2, xD, xF);
 		var result2 = drawJL(TESTER_2,R,xD);
 		var result3 = drawTL(TESTER_2,R,xD,xF,T1,T2);
+		var result1 = drawTray2(TESTER_2,R,xD,xF);
 		document.getElementById('zongbanxiaolv2').innerHTML = ((result1 - 1)/N)*100;
 	}
 </script>
