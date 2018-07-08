@@ -839,9 +839,18 @@
 		return result;
 	}
 
-	function drawTray2(TESTER,R,xD,xF){
-		var a = R/(R+1);
+	function drawTray2(TESTER,R,xD,xF,T1,T2){
+		var T = ((T1+T2)/2);
+		var M = ((46*xF)/(28*xF+18));
+		var rF = (4.745*M*M-331.5*M+537.97);
+		var Cp = (0.001*(3.1949*T*(Math.log(M*100)/Math.log(10))-550.99*M-3.0506*T)+1.01);
+		var Q = ((Cp*(T2-T1))/rF+1);
+		var d = xF/(1-Q);
 		var b = xD/(R+1);
+		var c = Q/(Q-1);
+		var a = R/(R+1);
+		var dotx = ((d-b)/(a-c));
+		var doty = a*dotx+b;
 		var i = xD, j = (a*xD+b);
 		var m = [], n = [];
 		var flag = 0;
@@ -849,16 +858,27 @@
 		while(true){
 			m.push(i);
 			n.push(j);
-			if(flag == 0){ //作横线，并使总塔板数N + 1
+			if(flag == 0)
+			{ //作横线，并使总塔板数N + 1
 				flag = 1;
 				i = getX(j);
 				j = j;
 				result ++;
-			}else{ //作竖线
+			}
+			else
+			{ //作竖线
 				if(i < xF)break;
 				flag = 0;
 				i = i;
+				if(i>dotx)
+				{
 				j = a*i+b;
+				}
+				else
+				{
+				j = c*i+d;
+				}
+
 			}
 		}
 		var trace = {
@@ -898,7 +918,7 @@
 		}
 		var result2 = drawJL(TESTER_2,R,xD);
 		var result3 = drawTL(TESTER_2,R,xD,xF,T1,T2);
-		var result1 = drawTray2(TESTER_2,R,xD,xF);
+		var result1 = drawTray2(TESTER_2,R,xD,xF,T1,T2);
 		document.getElementById('zongbanxiaolv2').innerHTML = ((result1 - 1)/N)*100;
 	}
 </script>
