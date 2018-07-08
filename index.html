@@ -182,13 +182,17 @@
 	{
     #header {display: none;}
 	#information {display: block;}
-	#purpose #purposeinput {display: none;}
-    #purpose #purposereference{display: block;}
+	#information newinformation {display: none;}
+	#purpose #purposeinput {display: block;}
 	#principle {display: none;}
 	#device {display: block;}
-	#steps{display: block;}
+	#device h3 span {display: none;}
+	#steps {display: block;}
 	#steps #QRcode {display: none;}
-	#datarecord{display: block;}
+	#datarecord {display: block;}
+	#datarecord #fisresult {display: none;}
+	#datarecord #huizhi1{display: none;}
+	#datarecord #huizhi2{display: none;}
 	#questions{display: block;}
 	#about{display: none;}
 	}
@@ -269,7 +273,7 @@
 				<tr>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><input type="reset" name="chongzhi" value="重置" style="width:100px;"></td>
+				<td><input id ="newinformation" type="reset" name="chongzhi" value="重置" style="width:100px;"></td>
 				</tr>
 				<tr>
 				<td>&nbsp;</td>
@@ -495,7 +499,7 @@
     </tbody>
     </table>
 	<br>
-		<input type="button" value="查看结果" onclick="fisfigure()"><p>利用线性回归的最小二乘算法，相关系数R<sup>2</sup>是<span id="xiangguanxishu"></span></p>
+		<input id="fisresult" type="button" value="查看结果" onclick="fisfigure()"><p>利用线性回归的最小二乘算法，相关系数R<sup>2</sup>是<span id="xiangguanxishu"></span></p>
 	   </form>
 	</div>
    <div id="table3">
@@ -626,7 +630,7 @@
 		<p>塔顶乙醇摩尔分数X<sub>D</sub></p><input id="tadingyichun"><br>
 		<p>塔釜乙醇摩尔分数X<sub>F</sub></p><input id="tafuyichun"><br>
 		<p>总塔板数N</p><input id="zongtaban">
-		<input type="button" onclick="toDrawTray()"  value="绘制"/>
+		<input id ="huizhi1" type="button" onclick="toDrawTray()"  value="绘制"/>
 		<br>
 		<div id="math-function" style="width:880px;height:400px;"></div>
 		<br>
@@ -644,7 +648,7 @@
 		<p>塔釜乙醇摩尔分数X<sub>F</sub></p><input id="tafuyichun2"><br>
 		<p>回流比R</p><input id="huiliubi"><br>
 		<p>总塔板数N</p><input id="zongtaban2">
-		<input type="button" onclick="toDrawTray2()"  value="绘制"/>
+		<input id ="huizhi2" type="button" onclick="toDrawTray2()"  value="绘制"/>
 		<br>
 		<!--<div id="mainContent2"  style="border-bottom: solid red 0px; height:100%; width:100%; background-color:rgb(41,41,41); "></div>-->
 		<div id="math-function2" style="width:880px;height:400px;"></div>
