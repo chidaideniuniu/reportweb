@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>实验报告</title>
+<script type="text/javascript" src="js/js-1.js"></script>
+<script src="https://cdn.plot.ly/plotly-1.2.0.min.js"></script>
+<style type="text/css">
+	/*头部样式表*/
+	#header{
+		width:940px;margin:0 auto;background:url(imgs/网站头图.jpg) no-repeat 0 0;position:relative;
+		height:338px;
+	}
+	#header img.logo{
+	display: block;
+	font-size: 0;
+	position: absolute;
+	left: 36px;
+	top: 6px;
+	}
+	#header h1{
+		position:absolute;left:80px;top:160px;font-family:Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";font-size:15px;color:#FFFFFF;background-color:inherit;
+	}
+	#header h1 span{
+		display:block;left:52px;font-size:40px;color:#FFFFFF;background-color:inherit;
+	}
+	#header ul.location{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color:#424242;
+	position: absolute;
+	left: 298px;
+	top: 260px;
+}
+	#header ul.location li{float: left;border-right: 1px solid #bbb;}
+	#header ul.location li:last-child {border-right: none;}
+	/*#header ul.location li a{display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}*/
+	#header ul.location li a{display:block;padding:0 13px;font-size:16px;line-height:43px;background-color:inherit;text-decoration: none;color:white;}
+    #header ul.location li a:link {color: #FFF;} /* 未访问的链接 */
+    #header ul.location li a:visited {color: #FFF;} /* 已访问的链接 */
+	#header ul.location li a:active {color: #FFF;} /* 点击激活链接：在你点击该链接后，页面正在转向新地址的时候，链接显示此颜色 */
+    #header ul.location li a:hover:not(.active){color: #FFF;background-color: #1C8ADB;} /* 鼠标在链接上 */ 
+	#header ul.location li .active {background-color: #1C8ADB;}
+	/*实验目的样式表*/
+	#purpose{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#purpose h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	
+	#purpose #purposereference ol{
+		width:928px;margin:9px 0 9px 0;
+	}
+	#purpose #purposereference ol li{
+		font-size:16px;color:#424242;
+	}
+	/*实验原理样式表*/
+	#principle{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#principle h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	#principle h3 span{
+		font-size:16px;
+	}
+	#principle #prinpages{
+		text-align: center; width: 928px;height:22px;margin: 0;padding: 0;
+	}
+	#principle #prinpages ol{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-size:22px;
+	display:inline;
+	}
+	#principle #prinpages ol li{
+		width:115px;float: left;border-right: 1px solid #bbb;color:#FFFFFF;background-color:#424242;line-height:43px;
+	}
+	#principle #prinpages ol li:last-child {border-right: none;}
+	#principle #prinbanner{
+		width: 928px;
+	}
+	/*实验装置示意图样式表*/
+	#device{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#device h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	#device h3 span{
+		font-size:16px;
+	}
+	#device #devicepicshow table td
+	{
+		text-align:center;font-size:12px;
+	}
+	/*实验步骤样式表*/
+	#steps{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#steps h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	#steps ol{
+		background:#F2F2F2;margin:17px 17px 17px 0;float:left;color:#424242;font-size:16px;line-height: 32px;text-align:justify;
+	}
+	/*数据处理样式表*/
+	#datarecord{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#datarecord h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	#datarecord #table2nd td{
+		width:112px;
+	}
+	#datarecord #table2nd th{
+		width:20px;
+	}
+	#datarecord #table2nd input{
+		width:120px;
+	}
+	#datarecord #table3th td{
+		width:120px;
+	}	
+	#datarecord #table3th th{
+		width:100px;
+	}
+	#datarecord #table3th input{
+		width:124px;
+	}
+	#datarecord #table1st td{
+		width:120px;
+	}
+	#datarecord #table1st th{
+		width:100px;
+	}
+	#datarecord #table1st input{
+		width:124px;
+	}
+	#datarecord #table4th td{
+		width:120px;
+	}	
+	#datarecord #table4th th{
+		width:100px;
+	}
+	#datarecord #table4th input{
+		width:124px;
+	}
+	/*思考题样式表*/
+	#questions{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#questions h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	/*关于我们样式表*/
+	#about{
+		width:940px;margin:5px auto 0 auto;padding:0 20px;
+	}
+	#about h3{
+		width:928px;float:left;margin:17px 0 10px 0;color:#424242;font-size:28px;font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";display:block;
+	}
+	</style>
+</head>
+
+<body>
+<!--标题头图-->
+<div id = "header">
+	<a href="index.html"><img src="imgs/logo.png" alt="实验报告网站" width="360" height="360" class="logo" title="实验报告网站" border="0"/></a>
+ 	<a href="index.html"><h1><span>实验报告 Go!</span>在线生成你的报告</h1></a>
+<!--导航栏-->
+<ul class="location">
+  <li><a href="#purposeh">实验目的</a></li>
+  <li><a href="#principleh">实验原理</a></li>
+  <li><a href="#deviceh">装置示意图</a></li>
+  <li><a href="#stepsh">实验步骤</a></li>
+  <li><a href="#datarecordh">数据处理</a></li>
+  <li><a href="#questionsh">思考题</a></li>
+  <li style="float:right;"><a class="active" href="#abouth">基本信息</a></li>
+</ul>
+</div>
+
+<div id="purpose">
+	<h3 id="purposeh">实验目的</h3>
+	<div id="purposeinput">
+	<!--<form action="form_action.asp" method="get" name="mypurpose">-->
+	<textarea wrap="hard" rows="6" style="resize:none;width:920px" placeholder="请写下实验目的……"></textarea><br>
+	<input type="button" value="查看参考" onclick="showpurreference()">
+    <!--</form>-->
+    </div>
+    <div id="purposereference"  style="display: none;">
+	<ol style="list-style-type: none;">
+		<li>1）了解筛板精馏塔及其附属设备的基本结构，掌握精馏过程的基本操作方法；</li>
+		<li>2）学会判断系统达到稳定的方法，掌握测定塔顶、塔釜溶液浓度的实验方法；</li>
+		<li>3）学习测定精馏塔全塔效率和单板效率的实验方法，研究回流比对精馏塔分离效率的影响。</li>
+	</ol>
+	<input type="button" value="隐藏参考" onclick="hidepurreference()">
+	</div>
+</div>
+
+<div id="principle">
+	  <h3 id="principleh">实验原理<span>（点击下方数字翻页）</span></h3>
+	  <div id="prinpages">
+      <ol style="list-style-type: none;">
+      <li id="firstpage" onclick="firstprin()">1</li>
+      <li id="secondpage" onclick="secondprin()">2</li>
+      <li id="thirdpage" onclick="thirdprin()">3</li>
+      <li id="fourthpage" onclick="fourthprin()">4</li>
+      <li id="fifthpage" onclick="fifthprin()">5</li>
+      <li id="sixthpage" onclick="sixthprin()">6</li>
+      <li id="seventhpage" onclick="seventhprin()">7</li>
+      <li id="eighthpage" onclick="eighthprin()">8</li>
+      </ol>
+      </div>
+      <div id="prinbanner">
+      <img id="prin" src="imgs/newpage1.png" width="928" height="522" alt=""/>
+      </div>
+</div>
+
+<div id="device">
+  	  <h3 id="deviceh">实验装置示意图<span>（将光标放在图上具体位置时，会出现提示）</span></h3>
+	  <img src="imgs/实验设备示意图.png" alt="示意图" title="实验设备示意图" width="339" height="521" usemap="#shiyituMap" id="shiyitu" style="float:left;"/>
+      <map name="shiyituMap">
+      <area shape="poly" coords="35,407,72,412,111,435,122,463,103,485,23,483,7,462,7,432"  href="imgs/1-储料罐.jpg" target="_blank" alt="1-储料罐" title="1-储料罐">
+      <area shape="poly" coords="147,470,123,485,119,502,118,518,150,518,160,497,163,473,163,469,156,467" href="imgs/2-进料泵.jpg" target="_blank" alt="2-进料泵" title="2-进料泵">
+      <area shape="poly" coords="43,484,81,486,85,508,56,509,41,497" alt="3-放料阀" title="3-放料阀">
+      <area shape="circle" coords="109,398,22" alt="4-料液循环阀" title="4-料液循环阀">
+      <area shape="rect" coords="130,293,166,329" alt="5-直接进料阀" title="5-直接进料阀">
+      <area shape="rect" coords="106,274,131,317" alt="6-间接进料阀" title="6-间接进料阀">
+      <area shape="poly" coords="97,231,114,231,119,252,120,274,107,276,102,294,91,299,94,242" href="imgs/7-流量计.jpg" target="_blank" alt="7-流量计" title="7-流量计">
+      <area shape="rect" coords="75,140,133,198" alt="8-高位槽" title="8-高位槽">
+      <area shape="poly" coords="154,104,168,105,175,114,201,113,199,133,175,134,153,122" alt="9-玻璃观察段" title="9-玻璃观察段">
+      <area shape="poly" coords="172,302,205,298,216,294,230,294,227,306,199,323,171,321" alt="9-玻璃观察段" title="9-玻璃观察段">
+      <area shape="poly" coords="169,134,206,136,211,226,215,270,205,295,171,302" href="imgs/10-精馏塔.jpg" target="_blank" alt="10-精馏塔,T2~T8-温度测点" title="10-精馏塔,T2~T8-温度测点">
+      <area shape="poly" coords="171,223,159,206,143,204,143,182,163,184,171,181" href="imgs/10-精馏塔.jpg" target="_blank" alt="10-精馏塔" title="10-精馏塔">
+      <area shape="circle" coords="190,96,8" alt="T1-温度测点" title="T1-温度测点">
+      <area shape="poly" coords="159,410,155,392,148,388,138,389,138,413,148,422" alt="11-塔釜取样阀" title="11-塔釜取样阀">      
+      <area shape="poly" coords="139,433,156,432,160,459,141,459" alt="12-釜液放空阀" title="12-釜液放空阀">      
+      <area shape="poly" coords="236,70,266,70,280,67,267,61,270,7,275,4,235,4,234,20,219,25" href="imgs/13-塔顶冷凝器.jpg" alt="13-塔顶冷凝器" title="13-塔顶冷凝器" target="_blank">      
+      <area shape="poly" coords="237,72,281,72,291,83,290,113,247,101,239,91" href="imgs/14-回流比控制器.jpg" alt="14-回流比控制器" title="14 -回流比控制器" target="_blank">      
+      <area shape="poly" coords="222,105,239,108,255,110,255,131,225,128,220,112" alt="15-塔顶取样阀" title="15-塔顶取样阀">      
+      <area shape="poly" coords="246,263,267,267,281,255,279,215,264,208,253,206,241,197,225,196,223,207" href="imgs/16-塔顶液回收罐.jpg" target="_blank" alt="16-塔顶液回收罐" title="16-塔顶液回收罐">      
+      <area shape="poly" coords="222,329,238,310,251,304,252,318,235,333" alt="17-放空阀" title="17-放空阀">      
+      <area shape="poly" coords="247,322,258,321,261,348,251,351,243,343,242,331" alt="17-放空阀" title="17-放空阀">      
+      <area shape="poly" coords="282,322,283,331,292,336,297,343,300,348,311,348,309,330,294,319" alt="17-放空阀" title="17-放空阀">
+      <area shape="poly" coords="266,328,278,328,285,340,279,349,272,353,265,340" alt="18-塔釜出料阀" title="18-塔釜出料阀">      
+      <area shape="poly" coords="269,357,280,359,289,366,289,374,278,379,269,372,269,358" alt="18-塔釜出料阀" title="18-塔釜出料阀">   
+      <area shape="poly" coords="277,382,297,373,313,371,336,381,335,426,306,439,277,425" href="imgs/19-塔釜储料罐.jpg" target="_blank" alt="19-塔釜储料罐" title="19-塔釜储料罐">      
+      <area shape="poly" coords="290,432,277,430,264,428,265,378,247,377,248,427,249,446,265,449,286,442,290,431" href="imgs/20-塔釜冷凝器.jpg" alt="20-塔釜冷凝器" title="20-塔釜冷凝器" target="_blank">
+      <area shape="poly" coords="141,212,141,222,144,230,150,236,155,239,163,238,159,223,151,211,141,212" alt="21-第六块板进料阀" title="21-第六块板进料阀">
+      <area shape="poly" coords="145,238,161,239,161,250,159,262,149,261,144,249" alt="22-第七块板进料阀" title="22-第七块板进料阀">     
+      <area shape="poly" coords="143,267,162,271,161,288,143,286,143,266" alt="23-第八块板进料阀" title="23-第八块板进料阀">
+      <area shape="circle" coords="190,332,7" alt="T9-温度测点" title="T9-温度测点" >
+      <area shape="circle" coords="211,469,9" alt="T10-温度测点" title="T10-温度测点">
+      <area shape="circle" coords="135,229,8" alt="T11-温度测点" title="T11-温度测点">
+      <area shape="circle" coords="218,92,8" alt="T12-温度测点" title="T12-温度测点">
+      <area shape="poly" coords="170,443,187,442,187,469,192,475,199,475,207,485,191,490,175,482,171,465" href="imgs/1-储料罐.jpg" target="_blank" alt="1-储料罐" title="1-储料罐">
+      </map>
+      <div id="devicepicshow" style="float:left;margin-top: 90px;margin-left: 25px;">
+      <table width="520"  rules="none" style="visibility:hidden;">
+  	  <tbody>
+      <tr>
+      <td><img src="imgs/1-储料罐.jpg" width="125" height="164" alt="1-储料罐"/></td>
+      <td><img src="imgs/2-进料泵.jpg" width="125" height="164"  alt="2-进料泵"/></td>
+      <td id="img7"><img src="imgs/7-流量计.jpg" width="125" height="164" alt="7-流量计"/></td>
+      <td><img src="imgs/10-精馏塔.jpg" width="125" height="164" alt="10-精馏塔"/></td>
+      </tr>
+      <tr style="line-height: 28px;">
+      <td>1-储料罐</td>
+      <td>2-进料泵</td>
+      <td>7-流量计</td>
+      <td>10-精馏塔</td>
+      </tr>
+      </tbody>
+      </table>
+      <table width="520" rules="none" style="visibility:hidden;">
+      <tbody>
+      <tr>
+      <td><img src="imgs/13-塔顶冷凝器.jpg" width="100" height="129.6" alt="13-塔顶冷凝器"/></td>
+      <td><img src="imgs/14 -回流比控制器.jpg" width="100" height="129.6" alt="14 -回流比控制器"/></td>
+      <td><img src="imgs/16-塔顶液回收罐.jpg" width="100" height="129.6" alt="16-塔顶液回收罐"/></td>
+      <td><img src="imgs/19-塔釜储料罐.jpg" width="100" height="129.6" alt="19-塔釜储料罐"/></td>
+      <td><img src="imgs/20-塔釜冷凝器.jpg" width="100" height="129.6" alt="20-塔釜冷凝器"/></td>
+      </tr>
+      <tr style="line-height: 28px;">
+      <td>13-塔顶冷凝器</td>
+      <td>14 -回流比控制器</td>
+      <td>16-塔顶液回收罐</td>
+      <td>19-塔釜储料罐</td>
+      <td>20-塔釜冷凝器</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+</div>
+
+<div id="steps">
+	<h3 id="stepsh">实验步骤</h3>
+	<ol style="list-style-type: none;width:860px;">
+	<li style="font-size:24px;line-height:48px;">A. 实验操作
+	<ol style="list-style-type: none;">
+	<li style="line-height:36px;">1. 全回流操作</li>
+	<ol style="list-style-type: none;">
+		<li>1）打开塔顶冷凝器进水阀门，保证冷却水足量（60L/h 即可）。</li>
+		<li>2）记录室温，接通总电源开关（220V）。</li>
+		<li>3）调节加热电压约为 130 V, 待塔板上建立液层后再适当加大电压，使塔内维持正常操作。</li>
+		<li>4）当各块塔板上鼓泡均匀后，保持加热釜电压不变，在全回流情况下稳定 20 分钟左右。期间要随时观察塔内传质情况直至操作稳定。然后分别在塔顶、塔釜取样口用 50ml三角瓶同时取样，通过比重计或气相色谱仪分析样品浓度。</li>
+	</ol>
+	<li style="line-height:36px;">2. 部分回流操作</li>
+	<ol style="list-style-type: none;">
+		<li>1）打开间接进料阀门和进料泵，调节转子流量计，以 2.0-3.0（l／h)的流量向塔内加料，用回流比控制调节器调节回流比为 R＝4，馏出液收集在塔顶液回收罐中。</li>
+		<li>2）塔釜产品经冷却后由溢流管流出，收集在容器内。</li>
+		<li>3）待操作稳定后，观察塔板上传质状况，记下加热电压、塔顶温度等有关数据，整个操作中维持进料流量计读数不变，分别在塔顶、塔釜和进料三处取样，用折光仪分析其浓度并记录下进塔原料液的温度。</li>
+	</ol>
+	<li style="line-height:36px;">3. 实验结束</li>
+	<ol style="list-style-type: none;">
+		<li>1）取好实验数据并检查无误后可停止实验，此时关闭进料阀门和加热开关，关闭回流比调节器开关。</li>
+		<li>2）停止加热后 10 分钟再关闭冷却水，一切复原。</li>
+		<li>3）根据物系的 t-x-y 关系，确定部分回流下进料的泡点温度并进行数据处理。</li>
+	</ol>
+		</ol>
+		</li>
+		<li style="font-size:24px;line-height:48px;">B. 计算机控制实验操作
+		<ol style="list-style-type: none;">
+			<li style="line-height:36px;">
+				1. 打开计算机在桌面找到应用程序双击进入。
+			</li>
+			<li style="line-height:36px;">
+				2. 进入程序后左单击界面进入主控制界面，在主控制界面中同时显示出了各塔板温度，及相应的控制按键，可以控制加热开关、进料开关、回流比开关（红-关、绿-开），并且可以改变加热电压及回流比，来完成全回流实验和部分回流实验，取样及分析方法同上。进料量、进料口阀门开关及冷却水量还需手动调节同上。
+			</li>
+			<li style="line-height:36px;">
+				3. 实验结束。
+			</li>
+			<ol style="list-style-type: none;">
+				<li>1）取好实验数据检查无误后可停止实验，关闭进料阀门、进料泵开关和加热开关，关闭回流比开关。</li>
+				<li>2）停止加热后 10 分钟再关闭冷却水，一切复原。</li>
+				<li>3）根据物系的 t-x-y 关系，确定部分回流条件下进料的泡点温度，并进行数据处理。</li><br>
+				<div style="text-align:center;">扫描下方二维码做预习题<br><img src="imgs/xuanze.png" width="200" height="200" alt="xuanze"/></div>
+			</ol>
+		</ol>
+		</li>
+	</ol>
+ </div>
+
+<div id="datarecord">
+  <h3 id="datarecordh">数据处理</h3>
+    <div id="table2">
+    <!--<form action="form_action.asp" method="post">-->
+  	<form name="xiangduijiaozhengyinzi" oninput="fi_1.value=parseFloat(mi_1.value)/parseFloat(ai_1.value);fi_2.value=parseFloat(mi_2.value)/parseFloat(ai_2.value);fi_3.value=parseFloat(mi_3.value)/parseFloat(ai_3.value);fs_1.value=parseFloat(ms_1.value)/parseFloat(as_1.value);fs_2.value=parseFloat(ms_2.value)/parseFloat(as_2.value);fs_3.value=parseFloat(ms_3.value)/parseFloat(as_3.value);fis_1.value=(parseFloat(mi_1.value)*parseFloat(as_1.value))/(parseFloat(ms_1.value)*parseFloat(ai_1.value));fis_2.value=(parseFloat(mi_2.value)*parseFloat(as_2.value))/(parseFloat(ms_2.value)*parseFloat(ai_2.value));fis_3.value=(parseFloat(mi_3.value)*parseFloat(as_3.value))/(parseFloat(ms_3.value)*parseFloat(ai_3.value))">
+  	<table border="1" id="table2nd">
+    <caption>
+    相对校正因子的测定
+    </caption>
+    <tbody>
+    <tr>
+      <th scope="col">&nbsp;</th>
+		<th scope="col"><div align="center">m<sub>i</sub>/g（乙醇）</div></th>
+		<th scope="col"><div align="center">m<sub>s</sub>/g（正丁醇）</div></th>
+		<th scope="col"><div align="center">A<sub>i</sub></div></th>
+		<th scope="col"><div align="center">A<sub>s</sub></div></th>
+        <th scope="col"><div align="center">f<sub>i</sub></div></th>
+        <th scope="col"><div align="center">f<sub>s</sub></div></th>
+        <th scope="col"><div align="center">f<sub>is</sub></div></th>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">1</div></th>
+      <td> <input id="mi_1" type="text" name="mi_1" required></td>
+      <td> <input id="ms_1" type="text" name="ms_1" required></td>
+      <td> <input id="ai_1" type="text" name="ai_1" required></td>
+      <td> <input id="as_1" type="text" name="as_1" required></td>
+      <td> <output id="fi_1" name="fi_1"></output></td>
+      <td> <output id="fs_1" name="fs_1"></output></td>
+      <td> <output id="fis_1" name="fis_1"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">2</div></th>
+      <td><input id="mi_2" type="text" name="mi_2" required></td>
+       <td> <input id="ms_2" type="text" name="ms_2" required></td>
+      <td> <input id="ai_2" type="text" name="ai_2" required></td>
+      <td> <input id="as_2" type="text" name="as_2" required></td>
+      <td><output id="fi_2" name="fi_2"></output></td>
+      <td><output id="fs_2" name="fs_2"></output></td>
+      <td><output id="fis_2" name="fis_2"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">3</div></th>
+      <td><input id="mi_3" type="text" name="mi_3" required></td>
+       <td> <input id="ms_3" type="text" name="ms_3" required></td>
+      <td> <input id="ai_3" type="text" name="ai_3" required></td>
+      <td> <input id="as_3" type="text" name="as_3" required></td>
+		<td><output id="fi_3" name="fi_3"></output></td>
+      <td><output id="fs_3" name="fs_3"></output></td>
+      <td><output id="fis_3" name="fis_3"></output></td>
+    </tr>
+    </tbody>
+    </table>
+	<br>
+		<input type="button" value="查看结果" onclick="fisfigure()"><p>利用线性回归的最小二乘算法，相关系数R<sup>2</sup>是<span id="xiangguanxishu"></span></p>
+	   </form>
+	</div>
+   <div id="table3">
+    <!--<form action="form_action.asp" method="post">-->
+   	<form name="mixi1huiliu"  oninput="xxi_1.value=((parseFloat(jjd_1.value)*795)/(998.2-203.2*parseFloat(jjd_1.value)))">
+   		<table border="1" id="table3th">
+   		<caption>
+    	回流时x<sub>i</sub>的测定
+    	</caption>
+  		<tbody>
+    	<tr>
+      	<th scope="col">&nbsp;</th>
+      	<th scope="col"><div align="center">酒精度</div></th>
+      	<th scope="col"><div align="center">x<sub>i</sub></div></th>
+    	</tr>
+    	<tr>
+      	<th scope="row"><div align="left">进料</div></th>
+      	<td><input type="text" name="jjd_1" id="jjd_1" required></td>
+     	<td><output id="xxi_1" name="xxi_1"></output></td>
+    	</tr>
+  		</tbody>
+		</table>
+   	</form>
+  </div>
+   <div id="table1">
+    <!--<form action="form_action.asp" method="post">-->
+	  <form name="mixi" oninput="mmi_2.value=(fisfigure()*parseFloat(aai_2.value)*parseFloat(mms_2.value))/parseFloat(aas_2.value);mmi_3.value=(fisfigure()*parseFloat(aai_3.value)*parseFloat(mms_3.value))/parseFloat(aas_3.value);mmi_4.value=(fisfigure()*parseFloat(aai_4.value)*parseFloat(mms_4.value))/parseFloat(aas_4.value);mmi_5.value=(fisfigure()*parseFloat(aai_5.value)*parseFloat(mms_5.value))/parseFloat(aas_5.value);xxi_2.value=((18.02*(fisfigure()*parseFloat(aai_2.value)*parseFloat(mms_2.value))/parseFloat(aas_2.value))/(46.07*parseFloat(mmy_2.value)-28.05*(fisfigure()*parseFloat(aai_2.value)*parseFloat(mms_2.value))/parseFloat(aas_2.value)));xxi_3.value=((18.02*(fisfigure()*parseFloat(aai_3.value)*parseFloat(mms_3.value))/parseFloat(aas_3.value))/(46.07*parseFloat(mmy_3.value)-28.05*(fisfigure()*parseFloat(aai_3.value)*parseFloat(mms_3.value))/parseFloat(aas_3.value)));xxi_4.value=((18.02*(fisfigure()*parseFloat(aai_4.value)*parseFloat(mms_4.value))/parseFloat(aas_4.value))/(46.07*parseFloat(mmy_4.value)-28.05*(fisfigure()*parseFloat(aai_4.value)*parseFloat(mms_4.value))/parseFloat(aas_4.value)));xxi_5.value=((18.02*(fisfigure()*parseFloat(aai_5.value)*parseFloat(mms_5.value))/parseFloat(aas_5.value))/(46.07*parseFloat(mmy_5.value)-28.05*(fisfigure()*parseFloat(aai_5.value)*parseFloat(mms_5.value))/parseFloat(aas_5.value)))">
+	  	<table border="1" id="table1st">
+    <caption>
+    m<sub>i</sub>x<sub>i</sub>的测定
+    </caption>
+    <tbody>
+    <tr>
+      <th scope="col">&nbsp;</th>
+      <th scope="col"><div align="center">m<sub>样</sub></div></th>
+      <th scope="col"><div align="center">m<sub>s</sub></div></th>
+      <th scope="col"><div align="center">A<sub>i</sub></div></th>
+      <th scope="col"><div align="center">A<sub>s</sub></div></th>
+      <th scope="col"><div align="center">m<sub>i</sub></div></th>
+      <th scope="col"><div align="center">x<sub>i</sub></div></th>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">全回流塔釜</div></th>
+      <td> <input type="text" name="mmy_2" id="mmy_2" required></td>
+      <td> <input type="text" name="mms_2" id="mms_2" required></td>
+      <td> <input type="text" name="aai_2" id="aai_2" required></td>
+      <td> <input type="text" name="aas_2" id="aas_2" required></td>
+      <td> <output id="mmi_2" name="mmi_2"></output></td>
+      <td> <output id="xxi_2" name="xxi_2"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">全回流塔顶</div></th>
+      <td> <input type="text" name="mmy_3" id="mmy_3" required></td>
+      <td> <input type="text" name="mms_3" id="mms_3" required></td>
+      <td> <input type="text" name="aai_3" id="aai_3" required></td>
+      <td> <input type="text" name="aas_3" id="aas_3" required></td>
+      <td> <output id="mmi_3" name="mmi_3"></output></td>
+      <td> <output id="xxi_3" name="xxi_3"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">部分回流塔釜</div></th>
+      <td> <input type="text" name="mmy_4" id="mmy_4" required></td>
+      <td> <input type="text" name="mms_4" id="mms_4" required></td>
+      <td> <input type="text" name="aai_4" id="aai_4" required></td>
+      <td> <input type="text" name="aas_4" id="aas_4" required></td>
+      <td> <output id="mmi_4" name="mmi_4"></output></td>
+      <td> <output id="xxi_4" name="xxi_4"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">部分回流塔顶</div></th>
+      <td> <input type="text" name="mmy_5" id="mmy_5" required></td>
+      <td> <input type="text" name="mms_5" id="mms_5" required></td>
+      <td> <input type="text" name="aai_5" id="aai_5" required></td>
+      <td> <input type="text" name="aas_5" id="aas_5" required></td>
+      <td> <output id="mmi_5" name="mmi_5"></output></td>
+      <td> <output id="xxi_5" name="xxi_5"></output></td>
+    </tr>
+    </tbody>
+    </table>
+    </form>
+    </div>
+	<div id="table4">
+	 <!--<form action="form_action.asp" method="post">-->
+		<form name="mixi1huiliu"  oninput="xxxi_1.value=((parseFloat(jjjd_1.value)*795)/(998.2-203.2*parseFloat(jjjd_1.value)));xxxi_2.value=((parseFloat(jjjd_2.value)*795)/(998.2-203.2*parseFloat(jjjd_2.value)));xxxi_3.value=((parseFloat(jjjd_3.value)*795)/(998.2-203.2*parseFloat(jjjd_3.value)));xxxi_4.value=((parseFloat(jjjd_4.value)*795)/(998.2-203.2*parseFloat(jjjd_4.value)));xxxi_5.value=((parseFloat(jjjd_5.value)*795)/(998.2-203.2*parseFloat(jjjd_5.value)))">
+			<table border="1" id="table4th">
+			<caption>
+    	由酒精度计算得到的x<sub>i</sub>
+    	</caption>
+  <tbody>
+    <tr>
+      <th scope="col">&nbsp;</th>
+      <th scope="col"><div align="center">酒精度</div></th>
+      <th scope="col"><div align="center">x<sub>i</sub></div></th>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">进料</div></th>
+      <td><input type="text" name="jjjd_1" id="jjjd_1" required></td>
+      <td><output id="xxxi_1" name="xxxi_1"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">全回流塔釜</div></th>
+      <td><input type="text" name="jjjd_2" id="jjjd_2" required></td>
+      <td><output id="xxxi_2" name="xxxi_2"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">全回流塔顶</div></th>
+      <td><input type="text" name="jjjd_3" id="jjjd_3" required></td>
+      <td><output id="xxxi_3" name="xxxi_3"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">部分回流塔釜</div></th>
+      <td><input type="text" name="jjjd_4" id="jjjd_4" required></td>
+      <td><output id="xxxi_4" name="xxxi_4"></output></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="left">部分回流塔顶</div></th>
+      <td><input type="text" name="jjjd_5" id="jjjd_5" required></td>
+      <td><output id="xxxi_5" name="xxxi_5"></output></td>
+    </tr>
+  </tbody>
+</table>
+</form>
+	</div>
+	<div id="quanhuiliu">
+	<p style="font-size:24px;line-height:48px;">1. 全回流</p>
+	<form>
+		<p>进料乙醇摩尔分数X<sub>M</sub></p><input id="jinliaoyichun"><br>
+		<p>塔顶乙醇摩尔分数X<sub>D</sub></p><input id="tadingyichun"><br>
+		<p>塔釜乙醇摩尔分数X<sub>F</sub></p><input id="tafuyichun"><br>
+		<p>总塔板数N</p><input id="zongtaban">
+		<input type="button" onclick="toDrawTray()"  value="绘制"/>
+		<br>
+		<div id="math-function" style="width:880px;height:400px;"></div>
+		<br>
+		<p>总板效率是<output id="zongbanxiaolv">&nbsp;</output>%</p>
+	</form>
+	</div>
+    <div id="bufenhuiliu">
+	<p style="font-size:24px;line-height:48px;">2. 部分回流</p>
+	<form name="bufenhuiliu" oninput="cankaozhi.value=(-833.51*Math.pow(jinliaoyichun2.value,5)+2144.4*Math.pow(jinliaoyichun2.value,4)-2060.3*Math.pow(jinliaoyichun2.value,3)+921.49*Math.pow(jinliaoyichun2.value,2)-200.8*jinliaoyichun2.value+99.496);zongbanxiaolv2.value =( liluntabanshu2.value/zongtaban2.value)*100">
+		<p>进料乙醇摩尔分数X<sub>M</sub></p><input id="jinliaoyichun2"><br>
+		<p>进料温度（t<sub>1</sub>/℃）</p><input id="jinliaot1"><br>
+		<p>泡点温度（t<sub>2</sub>/℃）</p><input id="paodiant2"><br>
+		<p>泡点温度参考值</p><output id="cankaozhi"></output>
+		<p>塔顶乙醇摩尔分数X<sub>D</sub></p><input id="tadingyichun2"><br>
+		<p>塔釜乙醇摩尔分数X<sub>F</sub></p><input id="tafuyichun2"><br>
+		<p>回流比R</p><input id="huiliubi"><br>
+		<p>总塔板数N</p><input id="zongtaban2">
+		<input type="button" onclick="toDrawTray2()"  value="绘制"/>
+		<br>
+		<!--<div id="mainContent2"  style="border-bottom: solid red 0px; height:100%; width:100%; background-color:rgb(41,41,41); "></div>-->
+		<div id="math-function2" style="width:880px;height:400px;"></div>
+		<br>
+		<p>总板效率是<output id="zongbanxiaolv2">&nbsp;</output>%</p>
+	</form>
+	</div>
+</div>
+
+<div id="questions">
+	<h3 id="questionsh">结果与讨论</h3>
+	<!--<form action="form_action.asp" method="get" name="myanswer">-->
+	<textarea wrap="hard" rows="20" style="resize:none;width:920px" placeholder="请写下你的回答……"></textarea><br>
+	<!--<input type="button" value="确认">-->
+    <!--</form>-->
+</div>
+
+<div id="about">
+	<h3 id="abouth">基本信息</h3>
+</div>
+
+  
+<script type="text/javascript" language="javascript">
+	//全局变量声明,减少计算次数
+	var x = [], y = [];
+	var p = [0,1], q = [0,1];
+	TESTER_1 = document.getElementById('math-function');
+	TESTER_2 = document.getElementById('math-function2');
+	//第一段函数
+	for(var i = 0; i <= 0.0039; i += 0.0001){
+		x.push(i);
+		y.push(-619.741*Math.pow(i,2) + 13.94159*i + 9.58798e-6);
+	}
+
+	//第二段函数
+	for(var i = 0.0039;i <= 0.4209; i += 0.0001){
+		x.push(i);
+		y.push(1627.03623*Math.pow(i,7) - 3888.49616*Math.pow(i,6) + 3794.6659*Math.pow(i,5)
+			- 1957.71796*Math.pow(i,4) + 578.89322*Math.pow(i,3) - 99.82251*Math.pow(i,2)
+			+ 10.11036*i + 0.01394);
+	}
+
+	//第三段函数
+	for(var i = 0.4209; i <= 0.8941;i += 0.0001){
+		x.push(i);
+		y.push(0.32803*Math.pow(i,3) - 0.14454*Math.pow(i,2) + 0.32461*i + 0.48715);
+	}
+</script>
+<script type="text/javascript" language="javascript">
+	function initMathFunction(TESTER){
+		var trace1 = {
+			x:x,
+			y:y,
+			mode:'lines',
+			name:'分段函数曲线'
+		};
+		//直线
+		var trace2 = {
+			x:p,
+			y:q,
+			mode:'lines',
+			name:'y = x'
+		}
+		var data = [trace1, trace2];
+		Plotly.plot(TESTER, data);
+	}
+	initMathFunction(TESTER_1);
+	initMathFunction(TESTER_2);
+
+</script>
+<script type="text/javascript" language="javascript">
+	//通过因变量Fx获取自变量x的值
+	function getX(Fx){
+		var i = 0;
+		while(y[i] < Fx){
+			i++;
+			if(i > 10000)break;
+		}
+		if(i > 10000)return -1;
+		return x[i];
+	}
+	
+	//通过自变量x获取因变量y的值
+	function getFx(x){
+		var i = 0;
+		while(x[i] < x){
+			i++;
+			if(i > 10000)break;
+		}
+		if(i > 10000)return -1;
+		return y[i];
+	}
+	
+	/**
+	* 在TESTER上绘制塔板
+	* @param TESTER: 绘图div对象
+	* @param xD: 塔顶乙醇摩尔分数XD
+	* @param xF: 塔釜乙醇摩尔分数XF
+	* @return: 总塔板数N
+	*/
+	function drawTray(TESTER, xD, xF){
+		var i = xD, j = xD;
+		var m = [], n = [];
+		var flag = 0;
+		var result = 0;
+		while(true){
+			m.push(i);
+			n.push(j);
+			if(flag == 0){ //作横线，并使总塔板数N + 1
+				flag = 1;
+				i = getX(j);
+				j = j;
+				result ++;
+			}else{ //作竖线
+				if(i < xF)break;
+				flag = 0;
+				i = i;
+				j = i;
+			}
+		}
+		var trace = {
+			x:m,
+			y:n,
+			mode:'lines+markers',
+			name:'塔板'
+		}
+		data = [trace];
+		Plotly.plot(TESTER, data);
+		return result;
+	}
+	
+	function toDrawTray(){
+		var xD = parseFloat(document.getElementById('tadingyichun').value);
+		var xF = parseFloat(document.getElementById('tafuyichun').value);
+		var N = parseInt(document.getElementById('zongtaban').value);
+		if(xD > 0.894 || xF < 0){
+			alert("数据不符合条件，请检查输入");
+			return;
+		}
+		var result = drawTray(TESTER_1, xD, xF);
+		document.getElementById('zongbanxiaolv').innerHTML = ((result - 1)/N)*100;
+	}
+	
+	function toDrawTray2(){
+		var xD = parseFloat(document.getElementById('tadingyichun2').value);
+		var xF = parseFloat(document.getElementById('tafuyichun2').value);
+		var N = parseInt(document.getElementById('zongtaban2').value);
+		if(xD > 0.894 || xF < 0){
+			alert("数据不符合条件，请检查输入");
+			return;
+		}
+		var result = drawTray(TESTER_2, xD, xF);
+		document.getElementById('zongbanxiaolv2').innerHTML = ((result - 1)/N)*100;
+	}
+</script>
+
+</body>
+</html>
