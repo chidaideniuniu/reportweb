@@ -686,6 +686,8 @@
 	var p = [0,1], q = [0,1];
 	TESTER_1 = document.getElementById('math-function');
 	TESTER_2 = document.getElementById('math-function2');
+	TESTER_3 = document.getElementById('math-function2');
+	TESTER_4 = document.getElementById('math-function2');
 	//第一段函数
 	for(var i = 0; i <= 0.0039; i += 0.0001){
 		x.push(i);
@@ -786,7 +788,7 @@
 			mode:'lines+markers',
 			name:'塔板'
 		}
-		data = [trace];
+		var data = [trace];
 		Plotly.plot(TESTER, data);
 		return result;
 	}
@@ -807,13 +809,14 @@
 			mode:'lines',
 			name:'精馏段'
 		}
-		data = [trace];
+		var data = [trace];
 		Plotly.plot(TESTER, data);
 		return result;
 	}
 
 	function drawTL(TESTER,R,xD,xF,T1,T2)
 	{
+		var result = 0;
 		var T = ((T1+T2)/2);
 		var M = ((46*xF)/(28*xF+18));
 		var rF = 4.745*M*M-331.5*M+537.97;
@@ -831,7 +834,7 @@
 			mode:'lines+markers',
 			name:'提馏段'
 		}
-		data = [trace];
+		var data = [trace];
 		Plotly.plot(TESTER, data);
 		return result;
 	}
@@ -840,7 +843,7 @@
 		var xD = parseFloat(document.getElementById('tadingyichun').value);
 		var xF = parseFloat(document.getElementById('tafuyichun').value);
 		var N = parseInt(document.getElementById('zongtaban').value);
-		if(xD > 0.894 || xF < 0){
+		if(xD > 0.894 ||xD < 0 ||xF < 0||xF > 1){
 			alert("数据不符合条件，请检查输入");
 			return;
 		}
@@ -856,12 +859,12 @@
 		var xF = parseFloat(document.getElementById('tafuyichun2').value);
 		var R = parseFloat(document.getElementById('huiliubi').value);
 		var N = parseInt(document.getElementById('zongtaban2').value);
-		if(xD > 0.894 || xF < 0){
+		if(xD > 0.894 ||xD < 0 ||xF < 0||xF > 1){
 			alert("数据不符合条件，请检查输入");
 			return;
 		}
-		var result = drawTray(TESTER_2, xD, xF);
-		var result2 =  drawJL(TESTER_3,R,xD);
+		var result1 = drawTray(TESTER_2, xD, xF);
+		var result2 = drawJL(TESTER_3,R,xD);
 		var result3 = drawTL(TESTER_4,R,xD,xF,T1,T2);
 		document.getElementById('zongbanxiaolv2').innerHTML = ((result - 1)/N)*100;
 	}
