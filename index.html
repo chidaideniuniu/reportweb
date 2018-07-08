@@ -182,8 +182,9 @@
 	{
     #header {display: none;}
 	#information {display: block;}
-	#information newinformation {display: none;}
+	#information #newinformation {display: none;}
 	#purpose #purposeinput {display: block;}
+	#purpose #lookref {display: none;}
 	#principle {display: none;}
 	#device {display: block;}
 	#device h3 span {display: none;}
@@ -217,7 +218,7 @@
 </div>
 
 <div id ="information">
-	<h3 id="informationh" style="text-align:center;">武汉大学化学实验教学中心实验讲义</h3>
+	<h3 id="informationh" style="text-align:center;">武汉大学化学实验教学中心 - 实验讲义</h3>
 		<form name="myinformation">
 			<table width="640" rules="none" align="center">
 				<tr>
@@ -289,7 +290,7 @@
 	<div id="purposeinput">
 	<form name="mypurpose">
 	<textarea wrap="hard" rows="6" style="resize:none;width:920px" placeholder="请写下实验目的……"></textarea><br>
-	<input type="button" value="查看参考" onclick="showpurreference()">
+	<input id="lookref" type="button" value="查看参考" onclick="showpurreference()">
    </form>
     </div>
     <div id="purposereference"  style="display: none;">
@@ -668,6 +669,9 @@
 
 <div id="about">
 	<h3 id="abouth">生成你的报告</h3>
+	<p style ="font-size: 16px;line-height:32px;">首选确认整个页面种内容填写完整。</p>
+	<p style ="font-size: 16px;line-height:32px;">接下来在页面空白处单击右键，选择【打印】，或者使用快捷键【Ctrl+P】。</p>
+	<p style ="font-size: 16px;line-height:32px;">之后在打印预览窗口种选择【打印】，可将这份实验报告另存为PDF格式的文件。</p>
 </div>
 
   
