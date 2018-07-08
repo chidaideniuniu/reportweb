@@ -822,7 +822,7 @@
 		var rF = 4.745*M*M-331.5*M+537.97;
 		var Cp = 0.001*(3.1949*T*(Math.log(M*100)/Math.log(10))-550.99*M-3.0506*T)+1.01;
 		var Q = (Cp*(T2-T1))/rF+1;
-		var d = 0-(xF/(Q-1));
+		var d = xF/(1-Q);
 		var b = xD/(R+1);
 		var c = Q/(Q-1);
 		var a = R/(R+1);
