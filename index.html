@@ -289,7 +289,7 @@
 	<h3 id="purposeh">实验目的</h3>
 	<div id="purposeinput">
 	<form name="mypurpose">
-	<textarea wrap="hard" rows="6" style="resize:none;width:920px" placeholder="请写下实验目的……"></textarea><br>
+	<textarea wrap="hard" rows="20" style="resize:none;width:920px" placeholder="请写下实验目的……"></textarea><br>
 	<input id="lookref" type="button" value="查看参考" onclick="showpurreference()">
    </form>
     </div>
@@ -498,11 +498,12 @@
       <td><output id="fis_3" name="fis_3"></output></td>
     </tr>
     </tbody>
-    </table>
+	</table>
 	<br>
 		<input id="fisresult" type="button" value="查看结果" onclick="fisfigure()"><p>利用线性回归的最小二乘算法，相关系数R<sup>2</sup>是<span id="xiangguanxishu"></span></p>
 	   </form>
 	</div>
+	<br>
    <div id="table3">
     <!--<form action="form_action.asp" method="post">-->
    	<form name="mixi1huiliu"  oninput="xxi_1.value=((parseFloat(jjd_1.value)*795)/(998.2-203.2*parseFloat(jjd_1.value)))">
@@ -525,6 +526,7 @@
 		</table>
    	</form>
   </div>
+  <br>
    <div id="table1">
     <!--<form action="form_action.asp" method="post">-->
 	  <form name="mixi" oninput="mmi_2.value=(fisfigure()*parseFloat(aai_2.value)*parseFloat(mms_2.value))/parseFloat(aas_2.value);mmi_3.value=(fisfigure()*parseFloat(aai_3.value)*parseFloat(mms_3.value))/parseFloat(aas_3.value);mmi_4.value=(fisfigure()*parseFloat(aai_4.value)*parseFloat(mms_4.value))/parseFloat(aas_4.value);mmi_5.value=(fisfigure()*parseFloat(aai_5.value)*parseFloat(mms_5.value))/parseFloat(aas_5.value);xxi_2.value=((18.02*(fisfigure()*parseFloat(aai_2.value)*parseFloat(mms_2.value))/parseFloat(aas_2.value))/(46.07*parseFloat(mmy_2.value)-28.05*(fisfigure()*parseFloat(aai_2.value)*parseFloat(mms_2.value))/parseFloat(aas_2.value)));xxi_3.value=((18.02*(fisfigure()*parseFloat(aai_3.value)*parseFloat(mms_3.value))/parseFloat(aas_3.value))/(46.07*parseFloat(mmy_3.value)-28.05*(fisfigure()*parseFloat(aai_3.value)*parseFloat(mms_3.value))/parseFloat(aas_3.value)));xxi_4.value=((18.02*(fisfigure()*parseFloat(aai_4.value)*parseFloat(mms_4.value))/parseFloat(aas_4.value))/(46.07*parseFloat(mmy_4.value)-28.05*(fisfigure()*parseFloat(aai_4.value)*parseFloat(mms_4.value))/parseFloat(aas_4.value)));xxi_5.value=((18.02*(fisfigure()*parseFloat(aai_5.value)*parseFloat(mms_5.value))/parseFloat(aas_5.value))/(46.07*parseFloat(mmy_5.value)-28.05*(fisfigure()*parseFloat(aai_5.value)*parseFloat(mms_5.value))/parseFloat(aas_5.value)))">
@@ -581,7 +583,8 @@
     </tbody>
     </table>
     </form>
-    </div>
+	</div>
+	<br>
 	<div id="table4">
 	 <!--<form action="form_action.asp" method="post">-->
 		<form name="mixi1huiliu"  oninput="xxxi_1.value=((parseFloat(jjjd_1.value)*795)/(998.2-203.2*parseFloat(jjjd_1.value)));xxxi_2.value=((parseFloat(jjjd_2.value)*795)/(998.2-203.2*parseFloat(jjjd_2.value)));xxxi_3.value=((parseFloat(jjjd_3.value)*795)/(998.2-203.2*parseFloat(jjjd_3.value)));xxxi_4.value=((parseFloat(jjjd_4.value)*795)/(998.2-203.2*parseFloat(jjjd_4.value)));xxxi_5.value=((parseFloat(jjjd_5.value)*795)/(998.2-203.2*parseFloat(jjjd_5.value)))">
@@ -624,6 +627,7 @@
 </table>
 </form>
 	</div>
+	<br>
 	<div id="quanhuiliu">
 	<p style="font-size:24px;line-height:48px;">1. 全回流</p>
 	<form>
@@ -638,6 +642,7 @@
 		<p>总板效率是<output id="zongbanxiaolv">&nbsp;</output>%</p>
 	</form>
 	</div>
+	<br>
     <div id="bufenhuiliu">
 	<p style="font-size:24px;line-height:48px;">2. 部分回流</p>
 	<form name="bufenhuiliu" oninput="cankaozhi.value=(-833.51*Math.pow(jinliaoyichun2.value,5)+2144.4*Math.pow(jinliaoyichun2.value,4)-2060.3*Math.pow(jinliaoyichun2.value,3)+921.49*Math.pow(jinliaoyichun2.value,2)-200.8*jinliaoyichun2.value+99.496);zongbanxiaolv2.value =( liluntabanshu2.value/zongtaban2.value)*100">
@@ -662,7 +667,7 @@
 <div id="questions">
 	<h3 id="questionsh">结果与讨论</h3>
 	<!--<form action="form_action.asp" method="get" name="myanswer">-->
-	<textarea wrap="hard" rows="20" style="resize:none;width:920px" placeholder="请写下你的回答……"></textarea><br>
+	<textarea wrap="hard" rows="50" style="resize:none;width:920px" placeholder="请写下你的回答……"></textarea><br>
 	<!--<input type="button" value="确认">-->
     <!--</form>-->
 </div>
